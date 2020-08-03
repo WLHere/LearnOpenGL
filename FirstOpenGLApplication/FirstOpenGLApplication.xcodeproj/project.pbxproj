@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3715C16C24D295950027BEB3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3715C16B24D295950027BEB3 /* main.cpp */; };
+		37A9F34B24D7D76200B99BBC /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 37A9F34A24D7D76200B99BBC /* glad.c */; };
+		37A9F34F24D7D8F000B99BBC /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A9F34E24D7D8F000B99BBC /* libglfw3.a */; };
+		37A9F35324D7DD2300B99BBC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A9F35224D7DD2300B99BBC /* OpenGL.framework */; };
+		37A9F35424D7DD3000B99BBC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A9F35024D7DD1B00B99BBC /* Cocoa.framework */; };
+		37A9F35624D7DD3C00B99BBC /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A9F35524D7DD3C00B99BBC /* GLUT.framework */; };
+		37A9F35824D7DD4400B99BBC /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A9F35724D7DD4400B99BBC /* CoreVideo.framework */; };
+		37A9F35A24D7DD4B00B99BBC /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A9F35924D7DD4B00B99BBC /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +32,13 @@
 /* Begin PBXFileReference section */
 		3715C16824D295940027BEB3 /* FirstOpenGLApplication */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FirstOpenGLApplication; sourceTree = BUILT_PRODUCTS_DIR; };
 		3715C16B24D295950027BEB3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		37A9F34A24D7D76200B99BBC /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glad.c; path = ../glad/src/glad.c; sourceTree = "<group>"; };
+		37A9F34E24D7D8F000B99BBC /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
+		37A9F35024D7DD1B00B99BBC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		37A9F35224D7DD2300B99BBC /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		37A9F35524D7DD3C00B99BBC /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		37A9F35724D7DD4400B99BBC /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		37A9F35924D7DD4B00B99BBC /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +46,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37A9F35A24D7DD4B00B99BBC /* IOKit.framework in Frameworks */,
+				37A9F35824D7DD4400B99BBC /* CoreVideo.framework in Frameworks */,
+				37A9F35624D7DD3C00B99BBC /* GLUT.framework in Frameworks */,
+				37A9F35424D7DD3000B99BBC /* Cocoa.framework in Frameworks */,
+				37A9F35324D7DD2300B99BBC /* OpenGL.framework in Frameworks */,
+				37A9F34F24D7D8F000B99BBC /* libglfw3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,8 +61,10 @@
 		3715C15F24D295940027BEB3 = {
 			isa = PBXGroup;
 			children = (
+				37A9F34A24D7D76200B99BBC /* glad.c */,
 				3715C16A24D295940027BEB3 /* FirstOpenGLApplication */,
 				3715C16924D295940027BEB3 /* Products */,
+				378E216F24D2F17400391A05 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +82,19 @@
 				3715C16B24D295950027BEB3 /* main.cpp */,
 			);
 			path = FirstOpenGLApplication;
+			sourceTree = "<group>";
+		};
+		378E216F24D2F17400391A05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				37A9F35924D7DD4B00B99BBC /* IOKit.framework */,
+				37A9F35724D7DD4400B99BBC /* CoreVideo.framework */,
+				37A9F35524D7DD3C00B99BBC /* GLUT.framework */,
+				37A9F35224D7DD2300B99BBC /* OpenGL.framework */,
+				37A9F35024D7DD1B00B99BBC /* Cocoa.framework */,
+				37A9F34E24D7D8F000B99BBC /* libglfw3.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3715C16C24D295950027BEB3 /* main.cpp in Sources */,
+				37A9F34B24D7D76200B99BBC /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,10 +212,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lgfw3";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -228,9 +267,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-lgfw3";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -239,6 +281,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -247,6 +290,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
