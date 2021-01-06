@@ -2,9 +2,9 @@
 # Custom rules for uninstall
 .SUFFIXES: 
 all: \
-	/Users/a58/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/CMakeFiles/uninstall
+	/Users/wenlongbai/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/CMakeFiles/uninstall
 
 
-/Users/a58/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/CMakeFiles/uninstall: 
+/Users/wenlongbai/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/CMakeFiles/uninstall: 
 	echo ""
-	/Applications/CMake.app/Contents/bin/cmake -P /Users/a58/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/cmake_uninstall.cmake
+	/Applications/CMake.app/Contents/bin/cmake -P /Users/wenlongbai/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/cmake_uninstall.cmake

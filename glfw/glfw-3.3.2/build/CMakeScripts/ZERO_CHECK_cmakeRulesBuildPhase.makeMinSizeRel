@@ -2,9 +2,9 @@
 # Custom rules for ZERO_CHECK
 .SUFFIXES: 
 all: \
-	/Users/a58/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/CMakeFiles/ZERO_CHECK
+	/Users/wenlongbai/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/CMakeFiles/ZERO_CHECK
 
 
-/Users/a58/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/CMakeFiles/ZERO_CHECK: 
+/Users/wenlongbai/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/CMakeFiles/ZERO_CHECK: 
 	echo ""
-	make -f /Users/a58/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/CMakeScripts/ReRunCMake.make
+	make -f /Users/wenlongbai/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/CMakeScripts/ReRunCMake.make

@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "/Users/a58/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/install_manifest.txt")
-  message(FATAL_ERROR "Cannot find install manifest: \"/Users/a58/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/install_manifest.txt\"")
+if (NOT EXISTS "/Users/wenlongbai/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/install_manifest.txt")
+  message(FATAL_ERROR "Cannot find install manifest: \"/Users/wenlongbai/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/install_manifest.txt\"")
 endif()
 
-file(READ "/Users/a58/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/install_manifest.txt" files)
+file(READ "/Users/wenlongbai/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})
