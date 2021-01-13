@@ -23,10 +23,15 @@ CMAKE_ADDR2LINE:FILEPATH=CMAKE_ADDR2LINE-NOTFOUND
 //Path to a program.
 CMAKE_AR:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar
 
-//Semicolon separated list of supported configuration types, only
-// supports Debug, Release, MinSizeRel, and RelWithDebInfo, anything
-// else will be ignored.
-CMAKE_CONFIGURATION_TYPES:STRING=Debug;Release;MinSizeRel;RelWithDebInfo
+//Choose the type of build, options are: None Debug Release RelWithDebInfo
+// MinSizeRel ...
+CMAKE_BUILD_TYPE:STRING=
+
+//Enable/Disable color output during build.
+CMAKE_COLOR_MAKEFILE:BOOL=ON
+
+//C compiler
+CMAKE_C_COMPILER:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=
@@ -63,6 +68,9 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
+
+//Enable/Disable output of compile commands during generation.
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=OFF
 
 //User executables (bin)
 CMAKE_INSTALL_BINDIR:PATH=bin
@@ -120,6 +128,9 @@ CMAKE_INSTALL_SYSCONFDIR:PATH=etc
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld
+
+//Path to a program.
+CMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/make
 
 //Flags used by the linker during the creation of modules during
 // all build types.
@@ -248,7 +259,7 @@ CMAKE_STRIP:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/Xcode
 CMAKE_VERBOSE_MAKEFILE:BOOL=OFF
 
 //Doxygen documentation generation tool (http://www.doxygen.org)
-DOXYGEN_EXECUTABLE:FILEPATH=DOXYGEN_EXECUTABLE-NOTFOUND
+DOXYGEN_EXECUTABLE:FILEPATH=/usr/local/bin/doxygen
 
 //Value Computed by CMake
 GLFW_BINARY_DIR:STATIC=/Users/wenlongbai/dev/github/LearnOpenGL/glfw/glfw-3.3.2/build
@@ -282,8 +293,6 @@ glfw_LIB_DEPENDS:STATIC=general;-framework Cocoa;general;-framework IOKit;genera
 # INTERNAL cache entries
 ########################
 
-//Stored Xcode object GUID
-ALL_BUILD_GUID_CMAKE:INTERNAL=2BA2A22916B342AE81BFC746
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -296,12 +305,16 @@ CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 CMAKE_CACHE_MINOR_VERSION:INTERNAL=19
 //Patch version of cmake used to create the current loaded cache
 CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
+//ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
+CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
 CMAKE_COMMAND:INTERNAL=/Applications/CMake.app/Contents/bin/cmake
 //Path to cpack program executable.
 CMAKE_CPACK_COMMAND:INTERNAL=/Applications/CMake.app/Contents/bin/cpack
 //Path to ctest program executable.
 CMAKE_CTEST_COMMAND:INTERNAL=/Applications/CMake.app/Contents/bin/ctest
+//ADVANCED property for variable: CMAKE_C_COMPILER
+CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS
 CMAKE_C_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_DEBUG
@@ -314,6 +327,8 @@ CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_DLLTOOL
 CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
+//Path to cache edit program executable.
+CMAKE_EDIT_COMMAND:INTERNAL=/Applications/CMake.app/Contents/bin/cmake-gui
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS
 CMAKE_EXE_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_DEBUG
@@ -324,10 +339,12 @@ CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
+CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
-CMAKE_GENERATOR:INTERNAL=Xcode
+CMAKE_GENERATOR:INTERNAL=Unix Makefiles
 //Generator instance identifier.
 CMAKE_GENERATOR_INSTANCE:INTERNAL=
 //Name of generator platform.
@@ -377,6 +394,8 @@ CMAKE_INSTALL_SHAREDSTATEDIR-ADVANCED:INTERNAL=1
 CMAKE_INSTALL_SYSCONFDIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_MAKE_PROGRAM
+CMAKE_MAKE_PROGRAM-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
 CMAKE_MODULE_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_DEBUG
@@ -390,7 +409,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -435,76 +454,10 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DOXYGEN_EXECUTABLE
 DOXYGEN_EXECUTABLE-ADVANCED:INTERNAL=1
+//Details about finding Doxygen
+FIND_PACKAGE_MESSAGE_DETAILS_Doxygen:INTERNAL=[/usr/local/bin/doxygen][cfound components: doxygen ][v1.8.16()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
-//Stored Xcode object GUID
-PROJECT_GLFW_GUID_CMAKE:INTERNAL=C9A4721B112D4677B19E198C
-//Stored Xcode object GUID
-ZERO_CHECK_GUID_CMAKE:INTERNAL=5572258CC0C140328BCE7A9F
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
-//Stored Xcode object GUID
-boing_GUID_CMAKE:INTERNAL=E0FB722C3EFC4FB4A2AE95D2
-//Stored Xcode object GUID
-clipboard_GUID_CMAKE:INTERNAL=769CD17B437F44A3977729D7
-//Stored Xcode object GUID
-cursor_GUID_CMAKE:INTERNAL=5EACC25D66CB4A52BEDF68DF
-//Stored Xcode object GUID
-empty_GUID_CMAKE:INTERNAL=24190E1B92DC4D46A451A5B3
-//Stored Xcode object GUID
-events_GUID_CMAKE:INTERNAL=A5FE8ADC1A304D359260EFE4
-//Stored Xcode object GUID
-gamma_GUID_CMAKE:INTERNAL=2F91D19A82B64690AD5892EB
-//Stored Xcode object GUID
-gears_GUID_CMAKE:INTERNAL=05A2C061C4ED4FDBADD47E94
-//Stored Xcode object GUID
-glfw_GUID_CMAKE:INTERNAL=040708968BCF469587259FE9
-//Stored Xcode object GUID
-glfwinfo_GUID_CMAKE:INTERNAL=6E6626222D564EA898714349
-//Stored Xcode object GUID
-heightmap_GUID_CMAKE:INTERNAL=EF9F49D6593A45AE8704ADAE
-//Stored Xcode object GUID
-icon_GUID_CMAKE:INTERNAL=3A84D498215348E7A4C787F3
-//Stored Xcode object GUID
-iconify_GUID_CMAKE:INTERNAL=0AC82FB263D140FC88B5250A
-//Stored Xcode object GUID
-inputlag_GUID_CMAKE:INTERNAL=A65266F875CF4668BC14C4A1
-//Stored Xcode object GUID
-install_GUID_CMAKE:INTERNAL=82E911841E37466A81B0E677
-//Stored Xcode object GUID
-joysticks_GUID_CMAKE:INTERNAL=2E804831EFD44C9C900CE974
-//Stored Xcode object GUID
-monitors_GUID_CMAKE:INTERNAL=5FB9D12E08F640AF9B69505E
-//Stored Xcode object GUID
-msaa_GUID_CMAKE:INTERNAL=E245D8FD5F034BD5A877B9BA
-//Stored Xcode object GUID
-offscreen_GUID_CMAKE:INTERNAL=2CC6E9B813E34082A22AE202
-//Stored Xcode object GUID
-opacity_GUID_CMAKE:INTERNAL=A25C6237CA314B1D99772E88
-//Stored Xcode object GUID
-particles_GUID_CMAKE:INTERNAL=58AC9F1B533648429F3E83F0
-//Stored Xcode object GUID
-reopen_GUID_CMAKE:INTERNAL=6E5325584EAB4DCFA2472271
-//Stored Xcode object GUID
-sharing_GUID_CMAKE:INTERNAL=FA4F49BEE8D147FCB32F69AD
-//Stored Xcode object GUID
-simple_GUID_CMAKE:INTERNAL=B63EBDFE87D14AE897365E3B
-//Stored Xcode object GUID
-splitview_GUID_CMAKE:INTERNAL=8E04B0EF1615455A9363F2DA
-//Stored Xcode object GUID
-tearing_GUID_CMAKE:INTERNAL=35E181A65EE24566B2B64EDC
-//Stored Xcode object GUID
-threads_GUID_CMAKE:INTERNAL=2B81244BCFBA4825A77CE2A6
-//Stored Xcode object GUID
-timeout_GUID_CMAKE:INTERNAL=BD555B2F3FBC44C0BE3A7443
-//Stored Xcode object GUID
-title_GUID_CMAKE:INTERNAL=8B9AA964BCE04F7487AD8E13
-//Stored Xcode object GUID
-triangle-vulkan_GUID_CMAKE:INTERNAL=D582C48C1B2347CCA0D33D1D
-//Stored Xcode object GUID
-uninstall_GUID_CMAKE:INTERNAL=2AFA1417D6F446DCB82561DC
-//Stored Xcode object GUID
-wave_GUID_CMAKE:INTERNAL=5F460E0F85A640F3A2C6ED74
-//Stored Xcode object GUID
-windows_GUID_CMAKE:INTERNAL=D5A423D4AB984CCAA79B9443
 
