@@ -15,11 +15,14 @@ int main()
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
+    // 指定使用opengl3.3版本
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    // 指定使用core_profile模式
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 #ifdef __APPLE__
+    // macos必须添加
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
