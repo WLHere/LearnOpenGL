@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5569C49A25B92578005B68E8 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 5569C49925B92578005B68E8 /* glad.c */; };
 		55B41DC825B7DB65000BA7EC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55B41DC725B7DB65000BA7EC /* main.cpp */; };
 		55B41DD125B7DC16000BA7EC /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B41DD025B7DC16000BA7EC /* IOKit.framework */; };
 		55B41DD325B7DC1E000BA7EC /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B41DD225B7DC1E000BA7EC /* CoreVideo.framework */; };
@@ -14,7 +15,6 @@
 		55B41DD725B7DC2D000BA7EC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B41DD625B7DC2D000BA7EC /* OpenGL.framework */; };
 		55B41DD925B7DC37000BA7EC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B41DD825B7DC37000BA7EC /* Cocoa.framework */; };
 		55B41DDB25B7DC45000BA7EC /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B41DDA25B7DC45000BA7EC /* libglfw3.a */; };
-		55B41DDE25B7DC65000BA7EC /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 55B41DDD25B7DC65000BA7EC /* glad.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5569C49925B92578005B68E8 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glad.c; path = ../../glad/src/glad.c; sourceTree = "<group>"; };
 		55B41DC425B7DB65000BA7EC /* HelloTriangle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HelloTriangle; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B41DC725B7DB65000BA7EC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		55B41DD025B7DC16000BA7EC /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -38,7 +39,6 @@
 		55B41DD625B7DC2D000BA7EC /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		55B41DD825B7DC37000BA7EC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		55B41DDA25B7DC45000BA7EC /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
-		55B41DDD25B7DC65000BA7EC /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glad.c; path = ../glad/src/glad.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,7 @@
 		55B41DBB25B7DB65000BA7EC = {
 			isa = PBXGroup;
 			children = (
-				55B41DDD25B7DC65000BA7EC /* glad.c */,
+				5569C49925B92578005B68E8 /* glad.c */,
 				55B41DC625B7DB65000BA7EC /* HelloTriangle */,
 				55B41DC525B7DB65000BA7EC /* Products */,
 				55B41DCF25B7DC16000BA7EC /* Frameworks */,
@@ -154,7 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55B41DC825B7DB65000BA7EC /* main.cpp in Sources */,
-				55B41DDE25B7DC65000BA7EC /* glad.c in Sources */,
+				5569C49A25B92578005B68E8 /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

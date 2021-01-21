@@ -14,7 +14,7 @@
 		5563D46425AEE953002493A7 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5563D46325AEE953002493A7 /* CoreVideo.framework */; };
 		5563D46625AEE965002493A7 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5563D46525AEE965002493A7 /* IOKit.framework */; };
 		5563D46825AEE9AD002493A7 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5563D46725AEE9AD002493A7 /* libglfw3.a */; };
-		5563D46B25AEEA32002493A7 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 5563D46A25AEEA32002493A7 /* glad.c */; };
+		5569C49E25B9259D005B68E8 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 5569C49D25B9259D005B68E8 /* glad.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,7 +38,7 @@
 		5563D46325AEE953002493A7 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		5563D46525AEE965002493A7 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		5563D46725AEE9AD002493A7 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
-		5563D46A25AEEA32002493A7 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glad.c; path = ../glad/src/glad.c; sourceTree = "<group>"; };
+		5569C49D25B9259D005B68E8 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glad.c; path = ../../glad/src/glad.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,7 @@
 		5563D44825AEE86B002493A7 = {
 			isa = PBXGroup;
 			children = (
-				5563D46A25AEEA32002493A7 /* glad.c */,
+				5569C49D25B9259D005B68E8 /* glad.c */,
 				5563D45325AEE86B002493A7 /* FirstGLApp */,
 				5563D45225AEE86B002493A7 /* Products */,
 				5563D45C25AEE940002493A7 /* Frameworks */,
@@ -154,7 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5563D45525AEE86B002493A7 /* main.cpp in Sources */,
-				5563D46B25AEEA32002493A7 /* glad.c in Sources */,
+				5569C49E25B9259D005B68E8 /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
