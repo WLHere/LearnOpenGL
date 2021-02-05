@@ -78,9 +78,10 @@ int main()
     "in vec2 TextureCoord;\n"
 
     "uniform sampler2D texture1;\n"
+    "uniform sampler2D texture2;\n"
 
     "void main() {\n"
-    "FragColor = texture(texture1, TextureCoord);\n"
+    "FragColor = mix(texture(texture1, TextureCoord), texture(texture2, TextureCoord), 0.2f);\n"
     "}\0";
     
     unsigned int vetextShader = glCreateShader(GL_VERTEX_SHADER);
@@ -158,6 +159,7 @@ int main()
     
     int width, height, nrChannels;
     std::cout << "App path " << system("pwd") << std::endl;
+    stbi_set_flip_vertically_on_load(true);
     unsigned char *data = stbi_load("/Users/wenlongbai/dev/github/LearnOpenGL/image/wooden_container.jpg", &width, &height, &nrChannels, 0);
     if (data) {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
@@ -167,8 +169,26 @@ int main()
         glfwTerminate();
         return 0;
     }
-    
     stbi_image_free(data);
+    
+    unsigned int texture1;
+    glGenTextures(1, &texture1);
+    glBindTexture(GL_TEXTURE_2D, texture1);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);// default wrap
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);// default filter
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    unsigned char *data1 = stbi_load("/Users/wenlongbai/dev/github/LearnOpenGL/image/awesomeface.png", &width, &height, &nrChannels, 0);
+    if (data1) {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data1);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    } else {
+        std::cout << "Failed to load texture1" << std::endl;
+        glfwTerminate();
+        return 0;
+    }
+    stbi_image_free(data1);
+    
     
 
     // render loop
@@ -186,7 +206,13 @@ int main()
         
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture);
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, texture1);
+        
         glUseProgram(shaderProgram);
+        glUniform1i(glGetUniformLocation(shaderProgram, "texture1"), 0);
+        glUniform1i(glGetUniformLocation(shaderProgram, "texture2"), 1);
+        
         glBindVertexArray(vao);
         
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -201,6 +227,7 @@ int main()
     glDeleteBuffers(1, &vbo);
     glDeleteBuffers(1, &ebo);
     glDeleteTextures(1, &texture);
+    glDeleteTextures(1, &texture1);
 
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------
