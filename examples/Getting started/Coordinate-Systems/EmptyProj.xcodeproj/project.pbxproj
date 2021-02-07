@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		553AB42225CFECF2006EA4BE /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 553AB42125CFECF2006EA4BE /* glad.c */; };
 		55ED60EA25CD25F400FFB0AA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55ED60E925CD25F400FFB0AA /* main.cpp */; };
-		55ED60F225CD263A00FFB0AA /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 55ED60F125CD263A00FFB0AA /* glad.c */; };
 		55ED60F625CD26FC00FFB0AA /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55ED60F525CD26FC00FFB0AA /* IOKit.framework */; };
 		55ED60F825CD270300FFB0AA /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55ED60F725CD270300FFB0AA /* CoreVideo.framework */; };
 		55ED60FA25CD270B00FFB0AA /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55ED60F925CD270B00FFB0AA /* GLUT.framework */; };
@@ -30,12 +30,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		553AB41225CFC244006EA4BE /* glm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = glm.hpp; path = ../../../util/glm/glm/glm.hpp; sourceTree = "<group>"; };
-		553AB41325CFC256006EA4BE /* matrix_transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = matrix_transform.hpp; path = ../../../../util/glm/glm/gtc/matrix_transform.hpp; sourceTree = "<group>"; };
-		553AB41425CFC268006EA4BE /* type_ptr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = type_ptr.hpp; path = ../../../../util/glm/glm/gtc/type_ptr.hpp; sourceTree = "<group>"; };
+		553AB42025CFECE5006EA4BE /* std_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = std_image.h; path = ../../../util/std_image.h; sourceTree = "<group>"; };
+		553AB42125CFECF2006EA4BE /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glad.c; path = ../../../glad/src/glad.c; sourceTree = "<group>"; };
+		553AB42425CFECFF006EA4BE /* glm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = glm.hpp; path = ../../../util/glm/glm/glm.hpp; sourceTree = "<group>"; };
+		553AB42525CFED2A006EA4BE /* type_ptr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = type_ptr.hpp; path = ../../../util/glm/glm/gtc/type_ptr.hpp; sourceTree = "<group>"; };
+		553AB42625CFED2A006EA4BE /* matrix_transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = matrix_transform.hpp; path = ../../../util/glm/glm/gtc/matrix_transform.hpp; sourceTree = "<group>"; };
 		55ED60E625CD25F400FFB0AA /* EmptyProj */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EmptyProj; sourceTree = BUILT_PRODUCTS_DIR; };
 		55ED60E925CD25F400FFB0AA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		55ED60F125CD263A00FFB0AA /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glad.c; path = ../../glad/src/glad.c; sourceTree = "<group>"; };
 		55ED60F525CD26FC00FFB0AA /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		55ED60F725CD270300FFB0AA /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		55ED60F925CD270B00FFB0AA /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -44,7 +45,6 @@
 		55ED60FF25CD272C00FFB0AA /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
 		55ED610525CD2A5E00FFB0AA /* shader_vs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shader_vs.h; sourceTree = "<group>"; };
 		55ED610725CD2BB800FFB0AA /* shader_fs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shader_fs.h; sourceTree = "<group>"; };
-		55ED610C25CD34C200FFB0AA /* std_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = std_image.h; path = ../../util/std_image.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,30 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		553AB41025CFC22C006EA4BE /* glm */ = {
-			isa = PBXGroup;
-			children = (
-				553AB41225CFC244006EA4BE /* glm.hpp */,
-				553AB41125CFC231006EA4BE /* gtc */,
-			);
-			path = glm;
-			sourceTree = "<group>";
-		};
-		553AB41125CFC231006EA4BE /* gtc */ = {
-			isa = PBXGroup;
-			children = (
-				553AB41425CFC268006EA4BE /* type_ptr.hpp */,
-				553AB41325CFC256006EA4BE /* matrix_transform.hpp */,
-			);
-			path = gtc;
-			sourceTree = "<group>";
-		};
 		55ED60DD25CD25F400FFB0AA = {
 			isa = PBXGroup;
 			children = (
-				553AB41025CFC22C006EA4BE /* glm */,
-				55ED610C25CD34C200FFB0AA /* std_image.h */,
-				55ED60F125CD263A00FFB0AA /* glad.c */,
+				553AB42625CFED2A006EA4BE /* matrix_transform.hpp */,
+				553AB42525CFED2A006EA4BE /* type_ptr.hpp */,
+				553AB42425CFECFF006EA4BE /* glm.hpp */,
+				553AB42125CFECF2006EA4BE /* glad.c */,
+				553AB42025CFECE5006EA4BE /* std_image.h */,
 				55ED60E825CD25F400FFB0AA /* EmptyProj */,
 				55ED60E725CD25F400FFB0AA /* Products */,
 				55ED60F425CD26FC00FFB0AA /* Frameworks */,
@@ -182,7 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55ED60EA25CD25F400FFB0AA /* main.cpp in Sources */,
-				55ED60F225CD263A00FFB0AA /* glad.c in Sources */,
+				553AB42225CFECF2006EA4BE /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
