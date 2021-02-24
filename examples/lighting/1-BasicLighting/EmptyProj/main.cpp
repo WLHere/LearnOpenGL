@@ -27,7 +27,7 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.6f, 0.5f, 5.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -66,8 +66,8 @@ int main()
     }
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-    glfwSetCursorPosCallback(window, mouse_callback);
-    glfwSetScrollCallback(window, scroll_callback);
+//    glfwSetCursorPosCallback(window, mouse_callback);
+//    glfwSetScrollCallback(window, scroll_callback);
     
     // tell GLFW to capture our mouse
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
@@ -124,12 +124,27 @@ int main()
     "   vec3 result = (ambient + diffuse) * objectColor;\n"
         
     "   FragColor = vec4(result, 1.0f);\n"
-    "}\n";
-    const char *light_vs = "";
-    const char *light_fs = "";
+    "}";
+    const char *light_vs = "#version 330 core\n"
+    "layout(location = 0) in vec3 aPos;\n"
+
+    "uniform mat4 model;\n"
+    "uniform mat4 view;\n"
+    "uniform mat4 projection;\n"
+
+    "void main() {\n"
+    "    gl_Position = projection * view * model * vec4(aPos, 1.0);\n"
+    "}";
+    const char *light_fs = "#version 330 core\n"
+    
+    "out vec4 FragColor;\n"
+
+    "void main() {\n"
+    "    FragColor = vec4(1.0);\n"
+    "}";
     
     Shader objShader(obj_vs, obj_fs);
-    Shader lightSourceShader(obj_vs, obj_fs);
+    Shader lightSourceShader(light_vs, light_fs);
     
     float verticles[] = {
         -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
@@ -224,6 +239,8 @@ int main()
         glm::mat4 project = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         glm::mat4 view = camera.GetViewMatrix();
         glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(-1.0f, -0.8f, -1.0f));
+        
         objShader.setMat4("projection", &project);
         objShader.setMat4("view", &view);
         objShader.setMat4("model", &model);
@@ -238,16 +255,16 @@ int main()
         glDrawArrays(GL_TRIANGLES, 0, 36);
         
         // draw the lamp object
-//        lightSourceShader.use();
-//        lightSourceShader.setMat4("projection", project);
-//        lightSourceShader.setMat4("view", view);
-//        model = glm::mat4(1.0f);
-//        model = glm::translate(model, lightPos);
-//        model = glm::scale(model, glm::vec3(0.2f));
-//        lightSourceShader.setMat4("model", model);
-//
-//        glBindVertexArray(lightSourceVAO);
-//        glDrawArrays(GL_TRIANGLES, 0, 36);
+        lightSourceShader.use();
+        lightSourceShader.setMat4("projection", &project);
+        lightSourceShader.setMat4("view", &view);
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, lightPos);
+        model = glm::scale(model, glm::vec3(0.2f));
+        lightSourceShader.setMat4("model", &model);
+
+        glBindVertexArray(lightSourceVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------

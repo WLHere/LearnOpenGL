@@ -35,6 +35,8 @@
 		5511013525DFE0B50037CD5A /* shader_s_v2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shader_s_v2.h; path = ../../../util/shader_s_v2.h; sourceTree = "<group>"; };
 		554FEAF225E0DB140068B889 /* vertex_shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vertex_shader.h; sourceTree = "<group>"; };
 		554FEAF325E0DC360068B889 /* fragment_shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fragment_shader.h; sourceTree = "<group>"; };
+		55DD40A425E5EC200015CB67 /* light_vs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = light_vs.h; sourceTree = "<group>"; };
+		55DD40A525E5EC2B0015CB67 /* light_fs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = light_fs.h; sourceTree = "<group>"; };
 		55ED60E625CD25F400FFB0AA /* EmptyProj */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EmptyProj; sourceTree = BUILT_PRODUCTS_DIR; };
 		55ED60E925CD25F400FFB0AA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		55ED60F525CD26FC00FFB0AA /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -88,6 +90,8 @@
 				55ED60E925CD25F400FFB0AA /* main.cpp */,
 				554FEAF225E0DB140068B889 /* vertex_shader.h */,
 				554FEAF325E0DC360068B889 /* fragment_shader.h */,
+				55DD40A425E5EC200015CB67 /* light_vs.h */,
+				55DD40A525E5EC2B0015CB67 /* light_fs.h */,
 			);
 			path = EmptyProj;
 			sourceTree = "<group>";
