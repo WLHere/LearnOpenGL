@@ -104,24 +104,33 @@ int main()
     
     "in vec3 Normal;\n"
     "in vec3 FragPos;\n"
-    
+
     "out vec4 FragColor;\n"
 
     "uniform float ambientStrength;\n"
     "uniform vec3 objectColor;\n"
     "uniform vec3 lightColor;\n"
     "uniform vec3 lightPos;\n"
+    "uniform vec3 viewPos;\n"
+
+    "float spcularStrength = 0.5;\n"
 
     "void main() {\n"
     "   vec3 ambient = ambientStrength * lightColor;\n"
-        
+    
     "   vec3 norm = normalize(Normal);\n"
     "   vec3 lightDir = normalize(lightPos - FragPos);\n"
         
     "   float diff = max(dot(norm, lightDir), 0.0f);\n"
     "   vec3 diffuse = diff * lightColor;\n"
         
-    "   vec3 result = (ambient + diffuse) * objectColor;\n"
+    "   vec3 viewDir = normalize(viewPos - FragPos);\n"
+    "   vec3 reflectDir = reflect(-lightDir, norm);\n"
+        
+    "   float spec = pow(max(dot(viewDir, reflectDir), 0), 0.0f);\n"
+    "   vec3 specular = spcularStrength * spec * lightColor;\n"
+        
+    "   vec3 result = (ambient + diffuse + specular) * objectColor;\n"
         
     "   FragColor = vec4(result, 1.0f);\n"
     "}";
@@ -249,6 +258,7 @@ int main()
         objShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
         objShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
         objShader.setVec3("lightPos", &lightPos);
+        objShader.setVec3("viewPos", &camera.Position);
         
         // render the cube
         glBindVertexArray(objVAO);
