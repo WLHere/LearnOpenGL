@@ -27,7 +27,7 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 // camera
-Camera camera(glm::vec3(0.6f, 0.5f, 5.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -37,7 +37,7 @@ float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
 // lighting
-glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+glm::vec3 lightPos(0.3f, 0.0f, 1.5f);
 
 int main()
 {
@@ -70,7 +70,7 @@ int main()
 //    glfwSetScrollCallback(window, scroll_callback);
     
     // tell GLFW to capture our mouse
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+//    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     // glad: load all OpenGL function pointers
     // ---------------------------------------
@@ -108,12 +108,12 @@ int main()
     "out vec4 FragColor;\n"
 
     "uniform float ambientStrength;\n"
+    "uniform float spcularStrength;\n"
     "uniform vec3 objectColor;\n"
     "uniform vec3 lightColor;\n"
     "uniform vec3 lightPos;\n"
     "uniform vec3 viewPos;\n"
 
-    "float spcularStrength = 0.5;\n"
 
     "void main() {\n"
     "   vec3 ambient = ambientStrength * lightColor;\n"
@@ -127,7 +127,7 @@ int main()
     "   vec3 viewDir = normalize(viewPos - FragPos);\n"
     "   vec3 reflectDir = reflect(-lightDir, norm);\n"
         
-    "   float spec = pow(max(dot(viewDir, reflectDir), 0), 0.0f);\n"
+    "   float spec = pow(max(dot(viewDir, reflectDir), 0), 32);\n"
     "   vec3 specular = spcularStrength * spec * lightColor;\n"
         
     "   vec3 result = (ambient + diffuse + specular) * objectColor;\n"
@@ -248,13 +248,14 @@ int main()
         glm::mat4 project = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         glm::mat4 view = camera.GetViewMatrix();
         glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(-1.0f, -0.8f, -1.0f));
+        model = glm::translate(model, glm::vec3(-1.5f, -1.2f, -2.0f));
         
         objShader.setMat4("projection", &project);
         objShader.setMat4("view", &view);
         objShader.setMat4("model", &model);
         
         objShader.setFloat("ambientStrength", 0.2f);
+        objShader.setFloat("spcularStrength", 0.5f);
         objShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
         objShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
         objShader.setVec3("lightPos", &lightPos);
