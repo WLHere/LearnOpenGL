@@ -127,7 +127,7 @@ int main()
     "   vec3 viewDir = normalize(viewPos - FragPos);\n"
     "   vec3 reflectDir = reflect(-lightDir, norm);\n"
         
-    "   float spec = pow(max(dot(viewDir, reflectDir), 0), 32);\n"
+    "   float spec = pow(max(dot(viewDir, reflectDir), 0.0), 2);\n"
     "   vec3 specular = spcularStrength * spec * lightColor;\n"
         
     "   vec3 result = (ambient + diffuse + specular) * objectColor;\n"
@@ -254,7 +254,7 @@ int main()
         objShader.setMat4("view", &view);
         objShader.setMat4("model", &model);
         
-        objShader.setFloat("ambientStrength", 0.2f);
+        objShader.setFloat("ambientStrength", 0.1f);
         objShader.setFloat("spcularStrength", 0.5f);
         objShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
         objShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
