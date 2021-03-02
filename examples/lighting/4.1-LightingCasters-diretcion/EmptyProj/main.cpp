@@ -30,7 +30,7 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 4.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 6.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -110,7 +110,7 @@ int main()
     "    float shininess;\n"
     "};\n"
     "struct Light {\n"
-    "    vec3 position;\n"
+    "    vec3 direction;\n"
     "    vec3 ambient;\n"
     "    vec3 diffuse;\n"
     "    vec3 specular;\n"
@@ -118,28 +118,22 @@ int main()
     "in vec3 Normal;\n"
     "in vec3 FragPos;\n"
     "in vec2 TexCoord;\n"
-    "uniform vec3 lightPos;\n"
     "uniform vec3 viewPos;\n"
     "uniform Material material;\n"
     "uniform Light light;\n"
     "out vec4 FragColor;\n"
     "void main() {\n"
     "    vec3 texColor = vec3(texture(material.diffuse, TexCoord));\n"
-    "    \n"
     "    vec3 ambient = light.ambient * texColor;\n"
-    "    \n"
     "    vec3 norm = normalize(Normal);\n"
-    "    vec3 lightDir = normalize(lightPos - FragPos);\n"
+    "    vec3 lightDir = normalize(-light.direction);\n"
     "    float diff = max(dot(norm, lightDir), 0.0f);\n"
     "    vec3 diffuse = light.diffuse * diff * texColor;\n"
-    "    \n"
     "    vec3 viewDir = normalize(viewPos - FragPos);\n"
     "    vec3 reflectDir = reflect(-lightDir, norm);\n"
     "    float spec = pow(max(dot(viewDir, reflectDir), 0), material.shininess);\n"
     "    vec3 specular = light.specular * (spec * vec3(texture(material.specular, TexCoord)));\n"
-    "    \n"
     "    vec3 result = ambient + diffuse + specular;\n"
-    "    \n"
     "    FragColor = vec4(result, 1.0f);\n"
     "}\n";
     const char *light_vs = "#version 330 core\n"
@@ -205,6 +199,20 @@ int main()
         -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
         -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
     };
+    
+    glm::vec3 cubePositions[] = {
+        glm::vec3( 0.0f,  0.0f,  0.0f),
+        glm::vec3( 2.0f,  5.0f, -15.0f),
+        glm::vec3(-1.5f, -2.2f, -2.5f),
+        glm::vec3(-3.8f, -2.0f, -12.3f),
+        glm::vec3( 2.4f, -0.4f, -3.5f),
+        glm::vec3(-1.7f,  3.0f, -7.5f),
+        glm::vec3( 1.3f, -2.0f, -2.5f),
+        glm::vec3( 1.5f,  2.0f, -2.5f),
+        glm::vec3( 1.5f,  0.2f, -1.5f),
+        glm::vec3(-1.3f,  1.0f, -1.5f)
+    };
+    
     // first, configure the cube's VAO (and VBO)
     unsigned int VBO, objVAO;
     glGenVertexArrays(1, &objVAO);
@@ -304,7 +312,6 @@ int main()
         
         objShader.setMat4("projection", &project);
         objShader.setMat4("view", &view);
-        objShader.setMat4("model", &model);
         
         objShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
         objShader.setVec3("lightPos", &lightPos);
@@ -326,6 +333,7 @@ int main()
         objShader.setVec3("light.ambient", &lightAmbientColor);
         objShader.setVec3("light.diffuse", &lightDiffuseColor);
         objShader.setVec3("light.specular", &lightSpecularColor);
+        objShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
         
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, diffuseMap);
@@ -334,7 +342,16 @@ int main()
         
         // render the cube
         glBindVertexArray(objVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        for (unsigned int i = 0; i < 10; i++) {
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, cubePositions[i]);
+            float angle = 20.0f * i;
+            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            objShader.setMat4("model", &model);
+            
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
+        
         
         // draw the lamp object
         lightSourceShader.use();
@@ -346,7 +363,7 @@ int main()
         lightSourceShader.setMat4("model", &model);
 
         glBindVertexArray(lightSourceVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+//        glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
