@@ -20,7 +20,7 @@ using namespace std;
 
 class Model {
     public:
-        Model(char *path) {
+        Model(string path) {
             loadModel(path);
         }
         void Draw(Shader &shader);
