@@ -137,7 +137,7 @@ int main()
     "}\n";
     
     Shader objShader(obj_vs, obj_fs);
-    Model model = Model("/Users/wenlongbai/dev/github/LearnOpenGL/image/survival-guitar-backpack-low-poly.obj");
+    Model model = Model("/Users/wenlongbai/dev/github/LearnOpenGL/image/model_backpack.zip");
     
 
     // render loop
